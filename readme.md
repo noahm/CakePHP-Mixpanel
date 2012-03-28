@@ -34,6 +34,7 @@ Then add to your app:
         // if a user is logged in
         $this->Mixpanel->identify($user_id);
         $this->Mixpanel->name_tag($user_name);
+        $this->Mixpanel->register($superProperties);
     }
 
     /* app/Controller/PostController.php */

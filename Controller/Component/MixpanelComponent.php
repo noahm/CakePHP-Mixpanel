@@ -16,8 +16,10 @@ class MixpanelComponent extends Component {
 	
 	function beforeRender() {
 		Configure::write('Mixpanel.events', $this->Session->read('Mixpanel.events'));
+		Configure::write('Mixpanel.register', $this->Session->read('Mixpanel.register'));
 		Configure::write('Mixpanel.settings', $this->settings);
 		$this->Session->delete('Mixpanel.events');
+		$this->Session->delete('Mixpanel.register');
 	}
 	
 	function name_tag($name) {
@@ -26,6 +28,22 @@ class MixpanelComponent extends Component {
 	
 	function identify($id) {
 		$this->settings['identify'] = $id;
+	}
+
+/**
+ * Register new properties using mpq.register(), accepts a key => value array of properties
+ * Sending a key => value with a duplicate key replaces the old value
+ *
+ * @param array $properties Array of key => value properties to register
+ * @return void
+ * @author David Kullmann
+ */
+	function register($properties) {
+		$register = $this->Session->read('Mixpanel.register');
+		foreach($properties as $key => $value) {
+			$register[$key] = $value;
+		}
+		$this->Session->write('Mixpanel.register', $register);
 	}
 	
 	function track($event, $properties = array()) {

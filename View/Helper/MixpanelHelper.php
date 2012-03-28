@@ -14,12 +14,16 @@ class MixpanelHelper extends AppHelper {
 TRACKERS
 </script><!-- end Mixpanel -->
 HTML;
+
 		$settings = Configure::read('Mixpanel.settings');
-		$events = Configure::read('Mixpanel.events');
+		$events   = Configure::read('Mixpanel.events');
+		$register = Configure::read('Mixpanel.register');
 		
 		$trackers = array();
+		if (Configure::read('debug')) $trackers[] = 'mpq.set_config({debug: true});';
 		if (isset($settings['identify'])) $trackers[] = sprintf('mpq.identify(%s);', json_encode($settings['identify']));
 		if (isset($settings['name_tag'])) $trackers[] = sprintf('mpq.name_tag(%s);', json_encode($settings['name_tag']));
+		if (isset($register)) $trackers[] = sprintf('mpq.register(%s);', json_encode($register));
 		
 		foreach ($events as $event) {
 			$properties = $event['properties'];

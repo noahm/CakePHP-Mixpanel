@@ -1,0 +1,14 @@
+{
+	"name": "noahm/Mixpanel",
+	"description": "CakePHP plugin providing easy analytics with Mixpanel",
+	"keywords": ["mixpanel", "cakephp"],
+	"type": "library",
+	"homepage": "https://github.com/noahm/CakePHP-Mixpanel",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Noah Manneschmidt",
+			"homepage": "http://noah.manneschmidt.net/"
+		}
+	]
+}

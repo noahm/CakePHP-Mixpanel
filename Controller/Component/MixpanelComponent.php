@@ -4,7 +4,7 @@ class MixpanelComponent extends Component {
 		'Session',
 	);
 	
-	function initialize($controller) {
+	public function initialize($controller) {
 		$this->settings = array(
 			'token' => Configure::read('Mixpanel.token'),
 			'properties' => array(),
@@ -14,7 +14,7 @@ class MixpanelComponent extends Component {
 		}
 	}
 	
-	function beforeRender() {
+	public function beforeRender($controller) {
 		Configure::write('Mixpanel.events', $this->Session->read('Mixpanel.events'));
 		Configure::write('Mixpanel.register', $this->Session->read('Mixpanel.register'));
 		Configure::write('Mixpanel.settings', $this->settings);
@@ -22,11 +22,11 @@ class MixpanelComponent extends Component {
 		$this->Session->delete('Mixpanel.register');
 	}
 	
-	function name_tag($name) {
+	public function name_tag($name) {
 		$this->settings['name_tag'] = $name;
 	}
 	
-	function identify($id) {
+	public function identify($id) {
 		$this->settings['identify'] = $id;
 	}
 
@@ -38,7 +38,7 @@ class MixpanelComponent extends Component {
  * @return void
  * @author David Kullmann
  */
-	function register($properties) {
+	public function register($properties) {
 		$register = $this->Session->read('Mixpanel.register');
 		foreach($properties as $key => $value) {
 			$register[$key] = $value;
@@ -46,13 +46,13 @@ class MixpanelComponent extends Component {
 		$this->Session->write('Mixpanel.register', $register);
 	}
 	
-	function track($event, $properties = array()) {
+	public function track($event, $properties = array()) {
 		$events = $this->Session->read('Mixpanel.events');
 		$events[] = compact('event', 'properties');
 		$this->Session->write('Mixpanel.events', $events);
 	}
 	
-	function trackInternal($event, $properties = array()) {
+	public function trackInternal($event, $properties = array()) {
 		$this->track($event, $properties);
 		// TODO replace this with an option to send the event straight to mixpanel
 		// for potential implementation see http://petewarden.typepad.com/searchbrowser/2008/06/how-to-post-an.html

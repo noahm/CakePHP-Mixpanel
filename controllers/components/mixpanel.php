@@ -40,8 +40,10 @@ class MixpanelComponent extends Object {
  */
 	public function register($properties) {
 		$register = $this->Session->read('Mixpanel.register');
-		foreach($properties as $key => $value) {
-			$register[$key] = $value;
+		if (!empty($properties)) {
+			foreach($properties as $key => $value) {
+				$register[$key] = $value;
+			}	
 		}
 		$this->Session->write('Mixpanel.register', $register);
 	}

@@ -5,9 +5,11 @@ This plugin provides a Mixpanel component to track events from your controllers.
 Then you use the provided Mixpanel helper to spit out the generated javascript
 into the next generated page. Modeled after the work by felixge:
 
-https://github.com/felixge/cakephp-mixpanel
+[https://github.com/felixge/cakephp-mixpanel](https://github.com/felixge/cakephp-mixpanel)
 
-The plugin is written for CakePHP 2.0, but there is [a branch for 1.3](https://github.com/noahm/CakePHP-Mixpanel/tree/1.3) backported by [dkullmann](https://github.com/dkullmann).
+The plugin is written for CakePHP 2.0, but there is 
+[a branch for 1.3](https://github.com/noahm/CakePHP-Mixpanel/tree/1.3)
+backported by [dkullmann](https://github.com/dkullmann).
 
 How to Use
 ----------
@@ -63,6 +65,6 @@ And you'll be sending events to mixpanel in no time!
 License
 -------
 
-Copyright 2012  Noah Manneschmidt
+Copyright 2012 Noah Manneschmidt
 
 Available for you to use under the MIT license. See: http://www.opensource.org/licenses/MIT

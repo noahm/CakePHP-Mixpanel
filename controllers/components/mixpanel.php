@@ -1,10 +1,10 @@
 <?php
-class MixpanelComponent extends Component {
+class MixpanelComponent extends Object {
 	public $components = array(
 		'Session',
 	);
 	
-	public function initialize($controller) {
+	public function initialize(&$controller) {
 		$this->settings = array(
 			'token' => Configure::read('Mixpanel.token'),
 			'properties' => array(),
@@ -14,7 +14,7 @@ class MixpanelComponent extends Component {
 		}
 	}
 	
-	public function beforeRender($controller) {
+	public function beforeRender(&$controller) {
 		Configure::write('Mixpanel.events', $this->Session->read('Mixpanel.events'));
 		Configure::write('Mixpanel.register', $this->Session->read('Mixpanel.register'));
 		Configure::write('Mixpanel.settings', $this->settings);
@@ -40,8 +40,10 @@ class MixpanelComponent extends Component {
  */
 	public function register($properties) {
 		$register = $this->Session->read('Mixpanel.register');
-		foreach($properties as $key => $value) {
-			$register[$key] = $value;
+		if (!empty($properties)) {
+			foreach($properties as $key => $value) {
+				$register[$key] = $value;
+			}	
 		}
 		$this->Session->write('Mixpanel.register', $register);
 	}

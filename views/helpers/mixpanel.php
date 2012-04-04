@@ -1,12 +1,7 @@
 <?php
-App::uses('AppHelper', 'View/Helper');
 class MixpanelHelper extends AppHelper {
-	public $name = 'Mixpanel';
 	
-	function test() {
-		// debug($this->_View->request);
-		return '';
-	}
+	public $name = 'Mixpanel';
 	
 	function embed() {
 		$include = <<<HTML
@@ -18,7 +13,7 @@ HTML;
 		$settings = Configure::read('Mixpanel.settings');
 		$events   = Configure::read('Mixpanel.events');
 		$register = Configure::read('Mixpanel.register');
-		
+				
 		$trackers = array();
 		if (Configure::read('debug')) $trackers[] = 'mpq.set_config({debug: true});';
 		if (isset($settings['identify'])) $trackers[] = sprintf('mpq.identify(%s);', json_encode($settings['identify']));

@@ -1,11 +1,13 @@
 CakePHP Mixpanel Plugin
 =======================
 
-You've got Cake, now you want Mixpanel. You read their website and they sent you here:
+This plugin provides a Mixpanel component to track events from your controllers.
+Then you use the provided Mixpanel helper to spit out the generated javascript
+into the next generated page. Modeled after the work by felixge:
 
 https://github.com/felixge/cakephp-mixpanel
 
-But that repo hasn't been updated in years, so I made you this one! (For CakePHP 2.0)
+The plugin is written for CakePHP 2.0, but there is [a branch for 1.3](https://github.com/noahm/CakePHP-Mixpanel/tree/1.3) backported by [dkullmann](https://github.com/dkullmann).
 
 How to Use
 ----------

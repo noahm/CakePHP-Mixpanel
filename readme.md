@@ -39,6 +39,15 @@ Then add to your app:
         $this->Mixpanel->identify($user_id);
         $this->Mixpanel->name_tag($user_name);
         $this->Mixpanel->register($superProperties);
+
+        /* To make use of the people API */
+		$this->Mixpanel->people($this->Auth->user('id'), array(
+			'$username' => $this->Auth->user('username'),
+			'$email' => $this->Auth->user('email'),
+			'$created' => $this->Auth->user('created'),
+			'$last_login' => $this->Auth->user('connected'),
+			'my_custom_var' => $my_custom_var,
+		));
     }
 
     /* app/Controller/PostController.php */

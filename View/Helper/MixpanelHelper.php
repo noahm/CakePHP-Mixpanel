@@ -21,6 +21,7 @@ HTML;
 		$register = Configure::read('Mixpanel.register');
 		
 		$trackers = array();
+		# Integration
 		if (Configure::read('debug')) $trackers[] = 'mixpanel.set_config({debug: true});';
 		if (isset($settings['identify'])) $trackers[] = sprintf('mixpanel.identify(%s);', json_encode($settings['identify']));
 		if (isset($settings['name_tag'])) $trackers[] = sprintf('mixpanel.name_tag(%s);', json_encode($settings['name_tag']));
@@ -39,6 +40,11 @@ HTML;
 			}
 		}
 
+		#People
+		if (isset($settings['people'])) {
+			 $trackers[] = sprintf('mixpanel.people.identify(%s);', json_encode($settings['people']['identify']));
+			 $trackers[] = sprintf('mixpanel.people.set(%s);', json_encode($settings['people']['set']));
+		}
 		
 		return str_replace(
 			array('TOKEN', 'TRACKERS'),

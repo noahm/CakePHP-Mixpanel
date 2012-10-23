@@ -24,17 +24,20 @@ HTML;
 		if (isset($settings['identify'])) $trackers[] = sprintf('mpq.identify(%s);', json_encode($settings['identify']));
 		if (isset($settings['name_tag'])) $trackers[] = sprintf('mpq.name_tag(%s);', json_encode($settings['name_tag']));
 		if (isset($register)) $trackers[] = sprintf('mpq.register(%s);', json_encode($register));
-		
-		foreach ($events as $event) {
-			$properties = $event['properties'];
-			$properties = array_merge($settings['properties'], $properties);
-			
-			$trackers[] = sprintf(
-				'mpq.track(%s, %s);',
-				json_encode($event['event']),
-				(!empty($properties)) ? json_encode($properties) : '{}'
-			);
+
+		if (!empty($events)) {
+			foreach ($events as $event) {
+				$properties = $event['properties'];
+				$properties = array_merge($settings['properties'], $properties);
+
+				$trackers[] = sprintf(
+					'mpq.track(%s, %s);',
+					json_encode($event['event']),
+					(!empty($properties)) ? json_encode($properties) : '{}'
+				);
+			}
 		}
+
 		
 		return str_replace(
 			array('TOKEN', 'TRACKERS'),

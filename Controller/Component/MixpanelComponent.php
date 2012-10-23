@@ -31,7 +31,7 @@ class MixpanelComponent extends Component {
 	}
 
 /**
- * Register new properties using mpq.register(), accepts a key => value array of properties
+ * Register new properties using mixpanel.register(), accepts a key => value array of properties
  * Sending a key => value with a duplicate key replaces the old value
  *
  * @param array $properties Array of key => value properties to register

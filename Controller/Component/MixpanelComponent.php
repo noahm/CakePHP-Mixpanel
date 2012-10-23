@@ -29,6 +29,11 @@ class MixpanelComponent extends Component {
 	public function identify($id) {
 		$this->settings['identify'] = $id;
 	}
+	
+	public function people($id, $properties = array()) {
+		$this->settings['people']['identify'] = $id;
+		$this->settings['people']['set'] = $properties;
+	}
 
 /**
  * Register new properties using mixpanel.register(), accepts a key => value array of properties

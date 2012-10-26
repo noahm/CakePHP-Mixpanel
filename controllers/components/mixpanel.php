@@ -29,9 +29,14 @@ class MixpanelComponent extends Object {
 	public function identify($id) {
 		$this->settings['identify'] = $id;
 	}
+	
+	public function people($id, $properties = array()) {
+		$this->settings['people']['identify'] = $id;
+		$this->settings['people']['set'] = $properties;
+	}
 
 /**
- * Register new properties using mpq.register(), accepts a key => value array of properties
+ * Register new properties using mixpanel.register(), accepts a key => value array of properties
  * Sending a key => value with a duplicate key replaces the old value
  *
  * @param array $properties Array of key => value properties to register

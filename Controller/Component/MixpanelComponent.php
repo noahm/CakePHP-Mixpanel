@@ -4,7 +4,7 @@ class MixpanelComponent extends Component {
 		'Session',
 	);
 	
-	public function initialize($controller) {
+	public function initialize(Controller $controller) {
 		$this->settings = array(
 			'token' => Configure::read('Mixpanel.token'),
 			'properties' => array(),
@@ -14,7 +14,7 @@ class MixpanelComponent extends Component {
 		}
 	}
 	
-	public function beforeRender($controller) {
+	public function beforeRender(Controller $controller) {
 		Configure::write('Mixpanel.events', $this->Session->read('Mixpanel.events'));
 		Configure::write('Mixpanel.register', $this->Session->read('Mixpanel.register'));
 		Configure::write('Mixpanel.settings', $this->settings);

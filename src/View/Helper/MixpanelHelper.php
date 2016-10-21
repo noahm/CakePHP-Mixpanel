@@ -1,6 +1,10 @@
 <?php
-App::uses('AppHelper', 'View/Helper');
-class MixpanelHelper extends AppHelper {
+
+namespace CakeMixpanel\View\Helper;
+
+use Cake\View\Helper;
+
+class MixpanelHelper extends Helper {
 	public $name = 'Mixpanel';
 	
 	function test() {

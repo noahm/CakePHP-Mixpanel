@@ -1,4 +1,10 @@
 <?php
+
+namespace CakeMixpanel\Controller\Component;
+
+use Cake\Controller\Component;
+use Cake\Core\Configure;
+
 class MixpanelComponent extends Component {
 	public $components = array(
 		'Session',
